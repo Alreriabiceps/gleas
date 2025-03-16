@@ -1,6 +1,7 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import profileImage from '../assets/56.jpg'
+import { useNavigate } from 'react-router';
+import ProfileHeader from '../components/ProfileHeader';
+
 
 const HomePage = () => {
   const navigate = useNavigate()
@@ -8,19 +9,10 @@ const HomePage = () => {
   const handleStartClick = () => {
     navigate('/start')
   }
-
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      <div className="absolute top-4 left-4 flex items-center space-x-4">
-        <img
-          src={profileImage}
-          alt="Profile"
-          className="w-20 h-20 rounded-full"
-        />
-        <div>
-          <h2 className="text-lg font-bold">AlreriaBiceps</h2>
-          <p className="text-sm text-gray-600">Immortal</p>
-        </div>
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white">
+      <div className='absolute top-4 left-4'>
+      <ProfileHeader />
       </div>
       <div className="text-center">
         <h1 className="text-5xl font-bold mb-8">ARE YOU READY?</h1>
