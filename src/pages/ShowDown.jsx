@@ -4,6 +4,10 @@ import { Bars4Icon } from '@heroicons/react/24/outline'
 const ShowDown = () => {
   const [playersOnline, setPlayersOnline] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [lobbyName, setLobbyName] = useState('')
+  const [isPublic, setIsPublic] = useState(true)
+  const [password, setPassword] = useState('')
 
   useEffect(() => {
     // Simulate fetching the number of players online from an API
@@ -23,8 +27,7 @@ const ShowDown = () => {
   }, [])
 
   const handleCreateLobby = () => {
-    // Logic to create a new lobby
-    console.log('Create New Lobby')
+    setModalOpen(true)
   }
 
   const handleJoinLobby = () => {
@@ -34,6 +37,20 @@ const ShowDown = () => {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
+  }
+
+  const handleModalClose = () => {
+    setModalOpen(false)
+  }
+
+  const handleModalSubmit = () => {
+    // Logic to create a new lobby with the provided details
+    console.log('Lobby Name:', lobbyName)
+    console.log('Public:', isPublic)
+    if (!isPublic) {
+      console.log('Password:', password)
+    }
+    setModalOpen(false)
   }
 
   return (
@@ -69,6 +86,73 @@ const ShowDown = () => {
           Join Lobby
         </button>
       </div>
+
+      {modalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-900 p-6 rounded shadow-lg text-gray-300 w-sm h-sm max-w-md">
+            <h2 className="text-xl font-bold mb-4">Create New Lobby</h2>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1" htmlFor="lobbyName">Lobby Name</label>
+              <input
+                type="text"
+                id="lobbyName"
+                value={lobbyName}
+                onChange={(e) => setLobbyName(e.target.value)}
+                className="w-full px-3 py-2 border rounded"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1">Visibility</label>
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  id="public"
+                  name="visibility"
+                  checked={isPublic}
+                  onChange={() => setIsPublic(true)}
+                  className="mr-2"
+                />
+                <label htmlFor="public" className="mr-4">Public</label>
+                <input
+                  type="radio"
+                  id="private"
+                  name="visibility"
+                  checked={!isPublic}
+                  onChange={() => setIsPublic(false)}
+                  className="mr-2"
+                />
+                <label htmlFor="private">Private</label>
+              </div>
+            </div>
+            {!isPublic && (
+              <div className="mb-4">
+                <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-3 py-2 border rounded"
+                />
+              </div>
+            )}
+            <div className="flex justify-end space-x-4">
+              <button
+                onClick={handleModalClose}
+                className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleModalSubmit}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

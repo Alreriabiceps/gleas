@@ -11,6 +11,14 @@ const Start = () => {
     const handleShowDownClick = () => {
       navigate('/showdown')
     }
+
+    const handleRapidFireClick = () => {
+      navigate('/rapid-fire')
+    }
+
+    const handleProveYourSelfClick = () => {
+      navigate('/prove-yourself')
+    }
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
       <div className="text-center">
@@ -21,10 +29,14 @@ const Start = () => {
            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded text-2xl w-2/3 mx-auto">
           Showdown
           </button>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded text-2xl w-2/3 mx-auto">
+          <button 
+          onClick={handleRapidFireClick} 
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded text-2xl w-2/3 mx-auto">
           Rapid Fire
           </button>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded text-2xl w-2/3 mx-auto">
+          <button
+          onClick={handleProveYourSelfClick} 
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded text-2xl w-2/3 mx-auto">
           Prove Yourself
           </button>
         </div>
