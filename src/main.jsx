@@ -9,6 +9,9 @@ import Profile from './pages/Profile.jsx'
 import ShowDown from './pages/ShowDown.jsx'
 import ProveYourSelf from './pages/ProveYourSelf.jsx'
 import RapidFire from './pages/RapidFire.jsx'
+import NewLobbyPage from './pages/NewLobbyPage.jsx'
+import JoinLobby from './pages/JoinLobby.jsx'
+import ShowDownStart from './pages/ShowDownStart.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -22,6 +25,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="showdown" element={<ShowDown />} />
         <Route path="prove-yourself" element={<ProveYourSelf />} />
         <Route path="rapid-fire" element={<ProveYourSelf />} />
+        <Route path="newlobbypage" element={<NewLobbyPage />} />
+        <Route path="joinlobby" element={<JoinLobby />} />
+        <Route path="showdownstart" element={<ShowDownStart />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>

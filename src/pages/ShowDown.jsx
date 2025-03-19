@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Bars4Icon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router'
 
 const ShowDown = () => {
+  const navigate = useNavigate()
   const [playersOnline, setPlayersOnline] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [lobbyName, setLobbyName] = useState('')
   const [isPublic, setIsPublic] = useState(true)
   const [password, setPassword] = useState('')
+
+  const handleNewLobbyPageClick = () => {
+    navigate('/newlobbypage')
+  }
 
   useEffect(() => {
     // Simulate fetching the number of players online from an API
@@ -31,8 +37,7 @@ const ShowDown = () => {
   }
 
   const handleJoinLobby = () => {
-    // Logic to join an existing lobby
-    console.log('Join Lobby')
+    navigate('/joinlobby')
   }
 
   const toggleMenu = () => {
@@ -51,6 +56,7 @@ const ShowDown = () => {
       console.log('Password:', password)
     }
     setModalOpen(false)
+    navigate('/newlobbypage')
   }
 
   return (
